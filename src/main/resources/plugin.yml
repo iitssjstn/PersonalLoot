@@ -1,0 +1,17 @@
+name: PersonalLoot
+version: '${project.version}'
+main: dev.personalloot.PersonalLootPlugin
+api-version: '26.1'
+description: Persoonlijke loot per speler voor alle kisten, barrels en minecarts die de wereld zelf maakt.
+commands:
+  personalloot:
+    description: Beheer persoonlijke loot-kisten
+    aliases: [ploot]
+    usage: /<command> help
+permissions:
+  personalloot.admin:
+    description: Gebruik alle /ploot commando's
+    default: op
+  personalloot.break:
+    description: Persoonlijke loot-kisten breken (sneaken + slaan)
+    default: op

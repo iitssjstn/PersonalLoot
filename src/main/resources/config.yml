@@ -1,0 +1,80 @@
+# =====================================================================
+#  PersonalLoot - elke speler zijn eigen loot uit kisten die de wereld
+#  zelf heeft gemaakt (dungeons, mineshafts, outposts, trial chambers...)
+# =====================================================================
+
+# Werelden waar de plugin NIETS doet (bijv. lobby of creative).
+disabled-worlds: []
+#  - lobby
+
+# Welke containers persoonlijk worden.
+containers:
+  chests: true      # kisten en trapped chests
+  barrels: true     # barrels (o.a. trial chambers, villages)
+  minecarts: true   # minecarts met kist (mineshafts)
+
+# Na hoeveel uur een speler opnieuw loot krijgt uit dezelfde kist.
+# 0 = nooit, elke kist geeft je maar 1x loot.
+refresh-hours: 0
+
+# Titel van het kistmenu. Kleurcodes met & mogen.
+inventory-title: "&6✦ &8Persoonlijke loot"
+
+protection:
+  prevent-break: true       # alleen spelers met personalloot.break kunnen breken (sneaken + slaan)
+  prevent-explosions: true  # TNT/creepers slopen de kist niet
+  prevent-hoppers: true     # hoppers kunnen niets uit/in de kist halen
+
+# ---------------------------------------------------------------------
+#  Markering: laat zien welke kisten JIJ nog niet geopend hebt.
+#  Iedere speler ziet alleen zijn eigen markeringen. Zodra je de kist
+#  opent, verdwijnt de markering voor jou (andere spelers zien hem nog).
+# ---------------------------------------------------------------------
+markers:
+  enabled: true
+  # frame = gouden randen + gouden slotje over de kist heen
+  # shell = gekleurd (glas)laagje over de hele kist
+  style: frame
+  frame-block: "minecraft:gold_block"
+  frame-thickness: 0.07
+  shell-block: "minecraft:yellow_stained_glass"
+  # true = markering altijd fel verlicht (goed zichtbaar in donkere grotten)
+  full-bright: false
+  # true = gloeiende omlijning, ook door muren heen zichtbaar!
+  glow: false
+  glow-color: "FFD700"
+  # Zwevend icoon boven de container.
+  icon:
+    blocks: false      # boven kisten/barrels
+    minecarts: true    # boven minecarts met kist (die krijgen geen gouden rand)
+    item: "minecraft:nether_star"
+    scale: 0.5
+  # Hoe ver je de markering ziet (1.0 = normaal).
+  view-range: 1.0
+
+# Deeltjes rond kisten die jij nog niet geopend hebt (alleen jij ziet ze).
+particles:
+  enabled: false
+  type: HAPPY_VILLAGER
+  count: 3
+  range: 16
+
+messages:
+  prefix: "&8[&6PersonalLoot&8] "
+  first-open: "&e✦ Deze loot is speciaal voor jou!"
+  cannot-break: "&cDeze loot-kist kun je niet breken."
+  cannot-break-admin: "&cSneak + sla om deze loot-kist te breken."
+  broken: "&aLoot-kist verwijderd."
+  no-permission: "&cDaar heb je geen toestemming voor."
+  player-only: "&cDit commando kan alleen in-game."
+  reloaded: "&aConfig herladen."
+  look-at-container: "&cKijk naar een kist, barrel of minecart met kist."
+  not-personal: "&7Dit is geen persoonlijke loot-kist. Gebruik &e/ploot set <loottable>&7 om er een te maken."
+  info: "&7Loot table: &e{table}&7 | Geopend door: &e{count}&7 speler(s) | Jij al geopend: &e{you}"
+  set-usage: "&cGebruik: /ploot set <loottable>  (bijv. simple_dungeon)"
+  unknown-table: "&cOnbekende loot table: &e{table}"
+  not-empty: "&cHaal eerst de items uit de kist, daarna kun je hem instellen."
+  set-done: "&aDeze kist geeft nu persoonlijke loot uit &e{table}&a."
+  reset-done: "&aLoot gereset voor &e{player}&a ({count} opgeslagen kist(en) gewist)."
+  unknown-player: "&cOnbekende speler: &e{player}"
+  removed: "&aDit is weer een gewone kist."
