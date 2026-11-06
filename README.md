@@ -14,7 +14,7 @@ Kisten die jij nog niet geopend hebt krijgen een **gouden rand + gouden slotje**
 - Alle data wordt in de kist zelf opgeslagen, geen database nodig
 
 ## Installeren
-1. Download de `.jar` (zie **Releases**) of bouw hem zelf (zie hieronder).
+1. Download [`download/PersonalLoot-1.0.0.jar`](download/PersonalLoot-1.0.0.jar) (klik daarna op de downloadknop rechtsboven) of bouw hem zelf (zie hieronder).
 2. Zet hem in `plugins/` en herstart de server.
 3. Gebruik niet tegelijk met andere per-speler-loot plugins (Lootr, Lootin, JustLootIt).
 
