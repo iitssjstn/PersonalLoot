@@ -14,7 +14,7 @@ Kisten die jij nog niet geopend hebt krijgen een **gouden rand + gouden slotje**
 - Alle data wordt in de kist zelf opgeslagen, geen database nodig
 
 ## Installeren
-1. Download [`download/PersonalLoot-1.0.0.jar`](download/PersonalLoot-1.0.0.jar) (klik daarna op de downloadknop rechtsboven) of bouw hem zelf (zie hieronder).
+1. Download de nieuwste `.jar` bij [**Releases**](https://github.com/iitssjstn/PersonalLoot/releases/latest).
 2. Zet hem in `plugins/` en herstart de server.
 3. Gebruik niet tegelijk met andere per-speler-loot plugins (Lootr, Lootin, JustLootIt).
 
@@ -36,8 +36,10 @@ Kisten die jij nog niet geopend hebt krijgen een **gouden rand + gouden slotje**
 ## Config
 Zie `src/main/resources/config.yml`. Belangrijkste opties: `markers.style` (`frame` of `shell`), `markers.frame-block`, `markers.full-bright`, `refresh-hours`, `disabled-worlds`.
 
-## Zelf bouwen
-Vereist **JDK 25** en Maven:
+## Bouwen
+GitHub bouwt de plugin automatisch bij elke push naar `main` (zie het tabblad **Actions**). De jar komt in de release van de versie uit `pom.xml`. Nieuwe versie uitbrengen: verhoog `<version>` in `pom.xml` en push.
+
+Zelf bouwen kan ook, met **JDK 25** en Maven:
 ```bash
 mvn package
 ```

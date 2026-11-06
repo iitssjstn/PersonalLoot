@@ -1,0 +1,51 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: JDK 25 installeren
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+
+      - name: Plugin bouwen
+        run: mvn -B package
+
+      - name: Versie bepalen
+        id: version
+        run: echo "version=$(mvn -q -B help:evaluate -Dexpression=project.version -DforceStdout)" >> "$GITHUB_OUTPUT"
+
+      - name: Jar bewaren als build-artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PersonalLoot-${{ steps.version.outputs.version }}
+          path: target/PersonalLoot-${{ steps.version.outputs.version }}.jar
+
+      - name: Release aanmaken of bijwerken
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          TAG="v$VERSION"
+          if ! gh release view "$TAG" >/dev/null 2>&1; then
+            gh release create "$TAG" \
+              --target "$GITHUB_SHA" \
+              --title "PersonalLoot $VERSION" \
+              --notes "Plugin voor Paper/Purpur 26.1.2. Download \`PersonalLoot-$VERSION.jar\` hieronder, zet hem in \`plugins/\` en herstart de server."
+          fi
+          gh release upload "$TAG" "target/PersonalLoot-$VERSION.jar" --clobber
